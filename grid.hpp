@@ -13,7 +13,7 @@ class Grid
         bool checkCols();
         bool checkBoxes();
     public:
-        Grid(initialVals);
+        Grid(char *fileName);
         ~Grid();
         int Query(int x, int y);
         bool isComplete();
