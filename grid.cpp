@@ -1,9 +1,5 @@
 #include "grid.hpp"
 
-#include <iostream>
-#include <fstream>
-using namespace std;
-
 /**
  * @brief Constructs a new grid of size 9 x 9. The
  * initial values are read from a file.
@@ -12,7 +8,7 @@ using namespace std;
  *
  * @return
  */
-Grid::Grid(char *fileName) {
+Grid::Grid(string fileName) {
     ifstream inf(fileName);
 
     if (!inf)
@@ -20,7 +16,7 @@ Grid::Grid(char *fileName) {
         cerr << "Can't read files of initial values" << endl;
         exit(1);
     }
-    lineCt = 0;
+    int lineCt = 0;
     while (inf)
     {
         std::string strInput;
@@ -28,5 +24,16 @@ Grid::Grid(char *fileName) {
         for (int i = 0; i < strInput.length(); i++) {
             cells[lineCt][i] = strInput[i];
         }
+    }
+}
+
+
+
+void Grid::print() {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            cout << cells[i][j] << " ";
+        }
+        cout << endl;
     }
 }

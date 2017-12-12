@@ -1,4 +1,8 @@
 #define SIZE 9
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
 
 /** 
  * @brief Represents a sudoku puzzle grid. Allows for certain actions such as
@@ -13,7 +17,7 @@ class Grid
         bool checkCols();
         bool checkBoxes();
     public:
-        Grid(char *fileName);
+        Grid(std::string fileName);
         ~Grid();
         int Query(int x, int y);
         bool isComplete();
