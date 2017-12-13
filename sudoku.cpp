@@ -1,8 +1,7 @@
 #include "grid.hpp"
 
 int main() {
-    string fileName;
-    cin >> fileName;
-    Grid *g = new Grid(fileName);
+    Grid *g = new Grid();
     g->print();
+    return 0;
 }

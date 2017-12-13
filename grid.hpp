@@ -1,4 +1,5 @@
 #define SIZE 9
+#define BOX_SIZE 3
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -12,15 +13,14 @@ using namespace std;
 class Grid
 {
     private:
-        int **cells;
-        bool checkRows();
-        bool checkCols();
-        bool checkBoxes();
+        char cells[SIZE][SIZE];
+        bool checkValid(int x, int y, char val);
     public:
-        Grid(std::string fileName);
+        Grid();
         ~Grid();
-        int Query(int x, int y);
+        char Query(int x, int y);
         bool isComplete();
-        bool writeNum(int x, int y, int val);
+        bool writeNum(int x, int y, char val);
+        void undoNum(int x, int y);
         void print();
 };
