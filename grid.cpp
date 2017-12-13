@@ -27,7 +27,31 @@ Grid::Grid(string fileName) {
     }
 }
 
+bool Grid::checkRows() {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            for (int k = 0; k < SIZE; k++) {
+                if (j != k && cells[i][j] == cells[i][k]) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
 
+bool Grid::checkCols() {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            for (int k = 0; k < SIZE; k++) {
+                if (j != k && cells[j][i] == cells[k][i]) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
 
 void Grid::print() {
     for (int i = 0; i < SIZE; i++) {
