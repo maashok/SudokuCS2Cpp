@@ -9,8 +9,16 @@
  * @return
  */
 Grid::Grid() {
+
+}
+
+Grid::~Grid() {
+    
+}
+
+void Grid::loadBoard(string fileName) {
     ifstream fileIn;
-    fileIn.open("testFile.in");
+    fileIn.open(fileName);
     int lineCt = 0;
     while(!fileIn.eof()) // To get you all the lines.
     {
@@ -22,15 +30,6 @@ Grid::Grid() {
         lineCt += 1;
     }
     fileIn.close();
-}
-
-Grid::~Grid() {
-    
-}
-
-// Should receive x and y already decremented
-char Grid::Query(int x, int y) {
-    return cells[x][y];
 }
 
 bool Grid::isComplete() {
@@ -60,20 +59,23 @@ void Grid::undoNum(int x, int y) {
     cells[x][y] = ' ';
 }
 
-bool Grid::chekValid(int x, int y, char val) {
+bool Grid::checkValid(int x, int y, char val) {
     for (int i = 0; i < SIZE; i++) {
         if (cells[x][i] == val) {
+            cout << "1" << x << i << endl;
             return false;
         }
-        if (cells[i][x] == val) {
+        if (cells[i][y] == val) {
+            cout << "2" << x << i << endl;
             return false;
         }
     }
-    boxRowMin = x - x % 3;
-    boxColMin = y - y % 3;
+    int boxRowMin = x - x % 3;
+    int boxColMin = y - y % 3;
     for (int i = boxRowMin; i < boxRowMin + 3; i ++) {
         for (int j = boxColMin; j < boxColMin + 3; j++) {
             if (cells[i][j] == val) {
+                cout << "3" << i << j << endl;
                 return false;
             }
         }

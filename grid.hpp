@@ -18,7 +18,7 @@ class Grid
     public:
         Grid();
         ~Grid();
-        char Query(int x, int y);
+        void loadBoard(string fileName);
         bool isComplete();
         bool writeNum(int x, int y, char val);
         void undoNum(int x, int y);

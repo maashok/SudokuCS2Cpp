@@ -1,7 +1,7 @@
-#include "grid.hpp"
+#include "game.hpp"
 
 int main() {
-    Grid *g = new Grid();
-    g->print();
+    Game *game = new Game();
+    game->Run();
     return 0;
 }
