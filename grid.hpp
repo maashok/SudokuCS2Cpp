@@ -15,6 +15,7 @@ class Grid
     private:
         char cells[SIZE][SIZE];
         bool checkValid(int x, int y, char val);
+        bool backtrack(char origCells[SIZE][SIZE], int x, int y);
     public:
         Grid();
         ~Grid();
@@ -23,4 +24,5 @@ class Grid
         bool writeNum(int x, int y, char val);
         void undoNum(int x, int y);
         void print();
+        void solve();
 };

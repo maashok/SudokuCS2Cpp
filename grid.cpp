@@ -61,12 +61,10 @@ void Grid::undoNum(int x, int y) {
 
 bool Grid::checkValid(int x, int y, char val) {
     for (int i = 0; i < SIZE; i++) {
-        if (cells[x][i] == val) {
-            cout << "1" << x << i << endl;
+        if (cells[x][i] == val && i != y) {
             return false;
         }
-        if (cells[i][y] == val) {
-            cout << "2" << x << i << endl;
+        if (cells[i][y] == val && x != i) {
             return false;
         }
     }
@@ -74,13 +72,58 @@ bool Grid::checkValid(int x, int y, char val) {
     int boxColMin = y - y % 3;
     for (int i = boxRowMin; i < boxRowMin + 3; i ++) {
         for (int j = boxColMin; j < boxColMin + 3; j++) {
-            if (cells[i][j] == val) {
-                cout << "3" << i << j << endl;
+            if (cells[i][j] == val && !(i == x && j == y)) {              
                 return false;
             }
         }
     }
     return true;
+}
+
+void Grid::solve() {
+    char cellsOrig[SIZE][SIZE];
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            cellsOrig[i][j] = cells[i][j];
+        }
+    }
+    int x = 0, y = 0;
+    while (cellsOrig[x][y] != ' ') {      
+        if (x == SIZE - 1) {
+            x ++;
+            y = 0;
+        }
+        else {
+            y ++;
+        }
+    }
+    bool worked = backtrack(cellsOrig, x, y);
+    cout << "End of function" << endl;
+}
+
+bool Grid::backtrack(char cellsOrig[SIZE][SIZE], int x, int y) {
+    if (x >= SIZE || y >= SIZE || isComplete())
+        return true;
+    int nextX = x, nextY = y;
+    do {
+        if (nextY == SIZE - 1) {
+            nextX ++;
+            nextY = 0;
+        }
+        else {
+            nextY ++;
+        }
+    } while (cellsOrig[nextX][nextY] != ' ');
+    for (int i = 1; i <= SIZE; i++) {
+        if (checkValid(x, y, '0'+i)) {
+            cells[x][y] = '0' + i;                                
+            if (backtrack(cellsOrig, nextX, nextY)) {
+                return true;
+            }
+        }
+    }
+    cells[x][y] = ' ';
+    return false;
 }
 
 void Grid::print() {
