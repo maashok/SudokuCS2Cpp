@@ -2,7 +2,10 @@
 
 int main() {
     Grid *grid = new Grid();
-    grid->loadBoard("testFile.in");
+    string fileName;
+    cout << "File name of board you want to solve" << endl;
+    cin >> fileName;
+    grid->loadBoard(fileName);
     grid->print();
     
     grid->solve();
