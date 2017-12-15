@@ -104,7 +104,9 @@ void Grid::solve() {
 bool Grid::backtrack(char cellsOrig[SIZE][SIZE], int x, int y) {
     if (x >= SIZE || y >= SIZE || isComplete())
         return true;
+    
     int nextX = x, nextY = y;
+    
     do {
         if (nextY == SIZE - 1) {
             nextX ++;
@@ -113,7 +115,7 @@ bool Grid::backtrack(char cellsOrig[SIZE][SIZE], int x, int y) {
         else {
             nextY ++;
         }
-    } while (cellsOrig[nextX][nextY] != ' ');
+    } while (nextX < SIZE && cellsOrig[nextX][nextY] != ' ');
     for (int i = 1; i <= SIZE; i++) {
         if (checkValid(x, y, '0'+i)) {
             cells[x][y] = '0' + i;                                
