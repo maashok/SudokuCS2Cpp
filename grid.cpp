@@ -26,6 +26,7 @@ void Grid::loadBoard(string fileName) {
         getline(fileIn, x); // Saves the line in STRING.
         for (int i = 0; i < SIZE; i++) {
             cells[lineCt][i] = x.at(i);
+            original[lineCt][i] = x.at(i);
         }
         lineCt += 1;
     }
@@ -56,7 +57,12 @@ bool Grid::writeNum(int x, int y, char val) {
 
 // Should receive already decremented
 void Grid::undoNum(int x, int y) {
-    cells[x][y] = ' ';
+    if (original[x][y] =    = ' '){
+        cells[x][y] = ' ';
+    }
+    else {
+        cout << "ERROR: Attempted to undo given cell. " << endl;
+    }
 }
 
 bool Grid::checkValid(int x, int y, char val) {

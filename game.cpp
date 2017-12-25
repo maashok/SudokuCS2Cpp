@@ -25,15 +25,15 @@ void Game::Run() {
             int icol = atoi(col.c_str());
             int ival = atoi(val.c_str());
             if (irow < 1 || irow > 9 || icol < 1 || icol > 9) {
-                cout << "Row and column numbers should be 1-9" << endl;
+                cout << "ERROR: Row and column numbers should be 1-9" << endl;
             }
             else if (ival < 1 || ival > 9) {
-                cout << "Cell values should be 1-9" << endl;
+                cout << "ERROR: Cell values should be 1-9" << endl;
             }
             else {
                 bool worked = grid->writeNum(irow - 1, icol - 1, *val.c_str());
                 if (worked == false) {
-                    cout << "This move is not valid, try again" << endl;
+                    cout << "ERROR: This move is not valid, try again" << endl;
                 }
             }
         }
@@ -43,7 +43,7 @@ void Game::Run() {
             int irow = atoi(row.c_str());
             int icol = atoi(col.c_str());
             if (irow < 1 || irow > 9 || icol < 1 || icol > 9) {
-                cout << "Row and column numbers should be 1-9" << endl;
+                cout << "ERROR: Row and column numbers should be 1-9" << endl;
             }
             else {
                 grid->undoNum(irow - 1, icol - 1);

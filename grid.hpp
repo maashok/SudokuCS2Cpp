@@ -14,6 +14,7 @@ class Grid
 {
     private:
         char cells[SIZE][SIZE];
+        char original[SIZE][SIZE];
         bool checkValid(int x, int y, char val);
         bool backtrack(char origCells[SIZE][SIZE], int x, int y);
     public:

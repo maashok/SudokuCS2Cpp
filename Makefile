@@ -23,8 +23,12 @@ all: $(SOURCES)
 	$(CC) $(FLAGS) -o $(EXENAME) $(INCLUDE) $(LIBDIR) $(SOURCES) $(LIBS)
 
 clean:
-	rm -f *.o $(EXENAME)
+	rm -f *.o $(EXENAME) test/*.out
 
-.PHONY: all clean
+check: 
+	$(all) ./test.sh
+
+
+.PHONY: all clean check
 
 
