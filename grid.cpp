@@ -98,7 +98,12 @@ void Grid::solve() {
         }
     }
     bool worked = backtrack(cellsOrig, x, y);
-    cout << "End of function" << endl;
+    if(worked) {
+        cout << "End of function" << endl;
+    }
+    else {
+        cout << "ERROR - Solve did not succeed. Valid Input?";
+    }
 }
 
 bool Grid::backtrack(char cellsOrig[SIZE][SIZE], int x, int y) {
