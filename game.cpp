@@ -49,6 +49,10 @@ void Game::Run() {
                 grid->undoNum(irow - 1, icol - 1);
             }
         }
+        else if (moveType == "q") {
+            cout << "Exiting!" << endl;
+            return;
+        }
         else {
             cout << "Enter a valid move type" << endl;
         }

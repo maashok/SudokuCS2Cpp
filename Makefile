@@ -25,8 +25,9 @@ all: $(SOURCES)
 clean:
 	rm -f *.o $(EXENAME) test/*.out
 
-check: 
-	$(all) ./test.sh
+check: all
+	./test.sh
+	python test/checker.py
 
 
 .PHONY: all clean check

@@ -57,7 +57,7 @@ bool Grid::writeNum(int x, int y, char val) {
 
 // Should receive already decremented
 void Grid::undoNum(int x, int y) {
-    if (original[x][y] =    = ' '){
+    if (original[x][y] == ' '){
         cells[x][y] = ' ';
     }
     else {
